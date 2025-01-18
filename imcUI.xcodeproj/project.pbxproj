@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		320235FD2D3B3F2D0001618E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 320235F32D3B3F2D0001618E /* Preview Assets.xcassets */; };
+		320235FE2D3B3F2D0001618E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 320235FA2D3B3F2D0001618E /* Assets.xcassets */; };
+		320235FF2D3B3F2D0001618E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320235F12D3B3F2D0001618E /* UserModel.swift */; };
+		320236002D3B3F2D0001618E /* UserMV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320235F52D3B3F2D0001618E /* UserMV.swift */; };
+		320236022D3B3F2D0001618E /* ImcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320235F82D3B3F2D0001618E /* ImcView.swift */; };
+		320236032D3B3F2D0001618E /* imcUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320235FB2D3B3F2D0001618E /* imcUIApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		23AAE80C2CADF26E008E3904 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,14 +36,15 @@
 		23AAE7FB2CADF26C008E3904 /* imcUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imcUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AAE80B2CADF26E008E3904 /* imcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = imcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AAE8152CADF26E008E3904 /* imcUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = imcUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		320235F12D3B3F2D0001618E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		320235F32D3B3F2D0001618E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		320235F52D3B3F2D0001618E /* UserMV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMV.swift; sourceTree = "<group>"; };
+		320235F82D3B3F2D0001618E /* ImcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImcView.swift; sourceTree = "<group>"; };
+		320235FA2D3B3F2D0001618E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		320235FB2D3B3F2D0001618E /* imcUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imcUIApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		23AAE7FD2CADF26C008E3904 /* imcUI */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = imcUI;
-			sourceTree = "<group>";
-		};
 		23AAE80E2CADF26E008E3904 /* imcUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = imcUITests;
@@ -75,7 +85,7 @@
 		23AAE7F22CADF26C008E3904 = {
 			isa = PBXGroup;
 			children = (
-				23AAE7FD2CADF26C008E3904 /* imcUI */,
+				320235FC2D3B3F2D0001618E /* imcUI */,
 				23AAE80E2CADF26E008E3904 /* imcUITests */,
 				23AAE8182CADF26E008E3904 /* imcUIUITests */,
 				23AAE7FC2CADF26C008E3904 /* Products */,
@@ -92,6 +102,51 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		320235F22D3B3F2D0001618E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				320235F12D3B3F2D0001618E /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		320235F42D3B3F2D0001618E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				320235F32D3B3F2D0001618E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		320235F62D3B3F2D0001618E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				320235F52D3B3F2D0001618E /* UserMV.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		320235F92D3B3F2D0001618E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				320235F82D3B3F2D0001618E /* ImcView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		320235FC2D3B3F2D0001618E /* imcUI */ = {
+			isa = PBXGroup;
+			children = (
+				320235FB2D3B3F2D0001618E /* imcUIApp.swift */,
+				320235F22D3B3F2D0001618E /* Models */,
+				320235F42D3B3F2D0001618E /* Preview Content */,
+				320235F62D3B3F2D0001618E /* ViewModels */,
+				320235F92D3B3F2D0001618E /* Views */,
+				320235FA2D3B3F2D0001618E /* Assets.xcassets */,
+			);
+			path = imcUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +161,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				23AAE7FD2CADF26C008E3904 /* imcUI */,
 			);
 			name = imcUI;
 			packageProductDependencies = (
@@ -212,6 +264,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320235FD2D3B3F2D0001618E /* Preview Assets.xcassets in Resources */,
+				320235FE2D3B3F2D0001618E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320235FF2D3B3F2D0001618E /* UserModel.swift in Sources */,
+				320236002D3B3F2D0001618E /* UserMV.swift in Sources */,
+				320236022D3B3F2D0001618E /* ImcView.swift in Sources */,
+				320236032D3B3F2D0001618E /* imcUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

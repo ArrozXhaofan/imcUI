@@ -11,7 +11,7 @@ import SwiftUI
 struct imcUIApp: App {
     var body: some Scene {
         WindowGroup {
-            StartView()
+            ImcView()
         }
     }
 }

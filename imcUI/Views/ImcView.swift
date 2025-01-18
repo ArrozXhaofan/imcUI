@@ -7,15 +7,29 @@
 
 import SwiftUI
 
+
 struct ImcView: View {
     
-    let DataUser: UserModel
+    @State var vm = UserMV()
+    
+    @State var systemUnit: SystemUnits = .metric
+    
+    @State var weight: Double = 0
+    @State var height: Double = 0
+    
+    let gradianWeightBar = LinearGradient(colors: [.cyan, .blue, .pink],
+                                          startPoint: .leading,
+                                          endPoint: .trailing)
+    let gradianHeightBar = LinearGradient(colors: [.red, .purple, .orange],
+                                          startPoint: .leading,
+                                          endPoint: .trailing)
+    
     
     func indexBar() -> CFloat {
-        if DataUser.imc > 44 {
+        if vm.userClientData.imc > 44 {
             return 44
         } else {
-            return CFloat(DataUser.imc)
+            return CFloat(vm.userClientData.imc)
         }
         
     }
@@ -25,27 +39,97 @@ struct ImcView: View {
         VStack {
             
             HStack {
-                
                 infoImcIndex
-                
                 Spacer()
-                
                 legentImcIndex
-                
                 barImcIndex
-                
             }
             
             Spacer()
             
+            VStack(spacing: 35) {
+                
+                Picker("", selection: $systemUnit) {
+                    ForEach(SystemUnits.allCases, id: \.rawValue) { unit in
+                        Text(unit.rawValue)
+                            .tag(unit)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .frame(width: 320)
+                .onChange(of: systemUnit) { _, newValue in
+                    vm.resetData()
+                    height = 0
+                    weight = 0
+                    print(vm.userClientData)
+                }
+                
+                VStack(spacing: 3) {
+                    Text(String(format:"%.1f", weight) + "\(systemUnit == .metric ?  " kg" : " lbs")")
+                    ZStack {
+                        Slider(value: $weight,
+                               in: vm.userClientData.unit == .metric ? 30...150 : 66...330,
+                               step: 0.1)
+                            .tint(.clear)
+                            .frame(width: 320)
+                            .opacity(0.5)
+                            .background {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundStyle(gradianWeightBar)
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(.gray, lineWidth: 0.5)
+                                    }
+                            }
+                    }
+                }
+                VStack(spacing: 3) {
+                    Text(String(format:"%.0f", height) + "\(systemUnit == .metric ?  " cm" : " in")")
+                    ZStack {
+                        Slider(value: $height,
+                               in: vm.userClientData.unit == .metric ? 140...230 : 50...120,
+                               step: 1)
+                            .tint(.clear)
+                            .frame(width: 320)
+                            .opacity(0.5)
+                            .background {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundStyle(gradianHeightBar)
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(.gray, lineWidth: 0.5)
+                                    }
+                            }
+                    }
+                }
+            }
+ 
+            Spacer()
+            
             Text("Los datos introducidos no se compatiran con ninguna entidad, eso incluyo al creador")
-                .font(.footnote)
+                .font(.caption2)
                 .foregroundStyle(.secondary)
                 .lineSpacing(0)
                 .multilineTextAlignment(.center)
-                .frame(width: 200)
+                .frame(width: 300)
             
         }//end main Vstack
+        .onChange(of: weight) { _, newValue in
+            vm.refreshUserData(systemUnit,
+                               peso: newValue,
+                               altura: height)
+            print(vm.userClientData.imc)
+        }
+        .onChange(of: height) { _, newValue in
+            vm.refreshUserData(systemUnit,
+                               peso: weight,
+                               altura: newValue)
+            print(vm.userClientData.imc)
+        }
+        .onAppear {
+            height = vm.userClientData.altura
+            weight = vm.userClientData.peso
+        }
     }//en body view
     
     var infoImcIndex: some View {
@@ -57,7 +141,7 @@ struct ImcView: View {
                     .font(.system(size: 15, weight: .light))
                     .foregroundStyle(.secondary)
                 
-                Text(String(format: "%.1f", DataUser.imc))
+                Text(String(format: "%.1f", vm.userClientData.imc))
                     .font(.system(size: 80, weight: .bold, design: .rounded))
                     .foregroundStyle(.
                                      linearGradient(
@@ -132,7 +216,6 @@ struct ImcView: View {
             
         }
         .font(.system(size: 10))
-
     }
     
     var barImcIndex: some View {
@@ -189,5 +272,5 @@ struct ImcView: View {
 }
 
 #Preview {
-    ImcView(DataUser: UserModel(altura: 1.72, peso: 72, imc: 21.231432))
+    ImcView()
 }
